@@ -75,10 +75,52 @@
 				<i class="fa fa-laptop"></i>
 				<h3>Electronic Services</h3>
 				<p>If you can't come to us, we offer secure electronic document services. Upload your document below for remote processing with the same care and professionalism.</p>
-				<form class="electronic-upload">
-					<input type="file" id="document-upload" name="document" class="form-control-file">
+				<form id="document-upload-form" class="electronic-upload">
+					<input type="file" id="document-upload" name="document" class="form-control-file" required>
 					<button type="submit" class="btn btn-sm btn-primary mt-2">Upload Document</button>
+					<div id="upload-status" class="mt-2"></div>
 				</form>
+				<script>
+					document.getElementById('document-upload-form').addEventListener('submit', function(e) {
+						e.preventDefault();
+						
+						const fileInput = document.getElementById('document-upload');
+						const statusDiv = document.getElementById('upload-status');
+						
+						if (fileInput.files.length === 0) {
+							statusDiv.innerHTML = '<span class="text-danger">Please select a file</span>';
+							return;
+						}
+						
+						const formData = new FormData();
+						formData.append('document', fileInput.files[0]);
+						
+						statusDiv.innerHTML = '<span class="text-info">Uploading...</span>';
+						
+						fetch('https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/contents/documents/' + fileInput.files[0].name, {
+							method: 'PUT',
+							headers: {
+								'Authorization': 'token YOUR_GITHUB_TOKEN',
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({
+								message: 'Upload document via website',
+								content: btoa(fileInput.files[0])
+							})
+						})
+						.then(response => response.json())
+						.then(data => {
+							if (data.content) {
+								statusDiv.innerHTML = '<span class="text-success">Upload successful!</span>';
+							} else {
+								statusDiv.innerHTML = '<span class="text-danger">Upload failed</span>';
+							}
+						})
+						.catch(error => {
+							statusDiv.innerHTML = '<span class="text-danger">Error: ' + error.message + '</span>';
+						});
+					});
+				</script>
 			</div>
 			<div class="col-md-4 col-sm-4">
 				<i class="fa fa-clock-o"></i>
