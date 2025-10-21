@@ -40,7 +40,7 @@
 					<li><a href="#home" class="smoothScroll">HOME</a></li>
 					<li><a href="#service" class="smoothScroll">SERVICES</a></li>
 					<li><a href="#about" class="smoothScroll">ABOUT</a></li>
-					<li><a href="#pricing" class="smoothScroll">PRICING</a></li>
+					<li><a href="#pricing" class="smoothScroll">APPOINTMENT BOOKING</a></li>
 					<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
 				</ul>
 			</div>
@@ -186,10 +186,10 @@
 				<div class="col-md-6 col-sm-6">
 					<h3>TRUSTED PROFESSIONALS</h3>
 					<h4>Licensed, Bonded, and Insured</h4>
-					<p>With 2 years of experience as a commissioner of oath documenting more than 500 documents, we
+					<p style="text-align: justify;">With 2 years of experience as a commissioner of oath documenting more than 500 documents, we
 						provide reliable and legally compliant services. I stay current with all state notary laws and
 						regulations to ensure your documents are properly executed.</p>
-					<p>We pride ourselves on maintaining the highest standards of professional ethics and
+					<p style="text-align: justify;">I pride myself on maintaining the highest standards of professional ethics and
 						confidentiality. When you choose our notary services, you can trust that your sensitive
 						documents will be handled with care and discretion.</p>
 				</div>
@@ -292,7 +292,7 @@
 						
 						<script>
 						function openCalendlyPopup() {
-							Calendly.initPopupWidget({url: 'https://calendly.com/notarymoncton'});
+							Calendly.initPopupWidget({url: 'https://calendly.com/notaryservicenb'});
 							return false;
 						}
 						</script>
@@ -315,7 +315,19 @@
 							<li>UP TO 30 MILES</li>
 							<li>EMERGENCY SERVICE</li>
 						</ul>
-						<button class="btn btn-warning">Book Now</button>
+						<button class="btn btn-warning" onclick="openCalendlyPopup()">Book Now</button>
+						
+						<script>
+						function openCalendlyPopup() {
+							Calendly.initPopupWidget({url: 'https://calendly.com/notaryservicenb'});
+							return false;
+						}
+						</script>
+						
+						<!-- Calendly badge widget begin -->
+						<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+						<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+						<!-- Calendly badge widget end -->
 					</div>
 				</div>
 			</div>
@@ -363,13 +375,15 @@
 </div> -->
 
 	<!-- footer section -->
-	<footer style="padding-top: 20px; padding-bottom: 10px;">
+	
+<footer style="padding-top: -9px; padding-bottom: -9px;">
+	<div id="contact"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<h2 style="margin-top: 0; margin-bottom: 10px;">Our Office</h2>
 					<p style="margin-bottom: 5px;">604 Evergreen Drive, Moncton, NB E1G 0K9</p>
-					<p style="margin-bottom: 5px;">Email: <span>amoldkadu@gmail.com</span></p>
+					<p style="margin-bottom: 5px;">Email: <span>notaryservicenb@gmail.com</span></p>
 					<p style="margin-bottom: 5px;">Phone: <span>506-864-4062</span></p>
 				</div>
 				<div class="col-md-6 col-sm-6">
@@ -383,7 +397,8 @@
 				</div>
 			</div>
 		</div>
-	</footer>
+	</div>	
+</footer>
 
 	<!-- copyright section -->
 	<div class="copyright" style="padding-top: 10px; padding-bottom: 10px;">
