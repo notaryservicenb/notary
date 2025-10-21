@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<meta charset="utf-8">
@@ -20,161 +21,196 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
 
 </head>
+
 <body data-spy="scroll" data-target=".navbar-collapse">
-	
-<!-- navigation -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-			</button>
-			<a href="#home" class="navbar-brand smoothScroll">Reliable Notary</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#home" class="smoothScroll">HOME</a></li>
-				<li><a href="#service" class="smoothScroll">SERVICES</a></li>
-				<li><a href="#about" class="smoothScroll">ABOUT</a></li>
-				<li><a href="#pricing" class="smoothScroll">PRICING</a></li>
-				<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
-			</ul>
-		</div>
-	</div>
-</div>		
 
-<!-- home section -->
-<div id="home">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
-				<h2>Welcome to</h2>
-				<h1>Reliable <strong>Notary Services</strong></h1>
-				<p>Professional notarization services when and where you need them. We provide mobile notary services for all your important documents with accuracy and integrity.</p>
-				<a href="#service" class="btn btn-default smoothScroll">OUR SERVICES</a>
+	<!-- navigation -->
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+				</button>
+				<a href="#home" class="navbar-brand smoothScroll">Reliable Notary</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#home" class="smoothScroll">HOME</a></li>
+					<li><a href="#service" class="smoothScroll">SERVICES</a></li>
+					<li><a href="#about" class="smoothScroll">ABOUT</a></li>
+					<li><a href="#pricing" class="smoothScroll">PRICING</a></li>
+					<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- service section -->
-<div id="service">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<h2>Our Notary Services</h2>
+	<!-- home section -->
+	<div id="home">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-6">
+					<h2>Welcome to</h2>
+					<h1>Reliable <strong>Notary Services</strong></h1>
+					<p>Professional notarization services when and where you need them. We provide mobile notary
+						services for all your important documents with accuracy and integrity.</p>
+					<a href="#service" class="btn btn-default smoothScroll">OUR SERVICES</a>
+				</div>
 			</div>
-			<div class="col-md-4 col-sm-4">
-				<i class="fa fa-file-text"></i>
-				<h3>Document Notarization</h3>
-				<p>We notarize a wide range of documents including wills, powers of attorney, affidavits, loan documents, and real estate transactions with attention to detail and legal precision.</p>
-			</div>
-			<div class="col-md-4 col-sm-4">
-				<i class="fa fa-laptop"></i>
-				<h3>Electronic Services</h3>
-				<p>If you can't come to us, we offer secure electronic document services. Upload your document below for remote processing with the same care and professionalism.</p>
-				<form id="document-upload-form" class="electronic-upload">
-					<input type="file" id="document-upload" name="document" class="form-control-file" required>
-					<button type="submit" class="btn btn-sm btn-primary mt-2">Upload Document</button>
-					<div id="upload-status" class="mt-2"></div>
-				</form>
-				<script>
-					document.getElementById('document-upload-form').addEventListener('submit', function(e) {
-						e.preventDefault();
-						
-						const fileInput = document.getElementById('document-upload');
-						const statusDiv = document.getElementById('upload-status');
-						
-						if (fileInput.files.length === 0) {
-							statusDiv.innerHTML = '<span class="text-danger">Please select a file</span>';
-							return;
-						}
-						
-						const formData = new FormData();
-						formData.append('document', fileInput.files[0]);
-						
-						statusDiv.innerHTML = '<span class="text-info">Uploading...</span>';
-						
-						fetch('https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/contents/documents/' + fileInput.files[0].name, {
-							method: 'PUT',
-							headers: {
-								'Authorization': 'token YOUR_GITHUB_TOKEN',
-								'Content-Type': 'application/json'
-							},
-							body: JSON.stringify({
-								message: 'Upload document via website',
-								content: btoa(fileInput.files[0])
-							})
-						})
-						.then(response => response.json())
-						.then(data => {
-							if (data.content) {
-								statusDiv.innerHTML = '<span class="text-success">Upload successful!</span>';
-							} else {
-								statusDiv.innerHTML = '<span class="text-danger">Upload failed</span>';
+		</div>
+	</div>
+
+	<!-- service section -->
+	<div id="service">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h2>Our Notary Services</h2>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<i class="fa fa-file-text"></i>
+					<h3>Document Notarization</h3>
+					<p style="text-align: justify;">We notarize a wide range of documents including wills, powers of attorney, affidavits, loan
+						documents, and real estate transactions with attention to detail and legal precision.</p>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<i class="fa fa-laptop"></i>
+					<h3>Electronic Services</h3>
+					<p style="text-align: justify;">
+						If you can't come to us, we offer secure electronic document services. You can email the document on amoldkadu@gmail.com and I will notarize it and send you back.
+					</p>
+					<!-- <form id="document-upload-form" class="electronic-upload">
+						<input type="file" id="document-upload" name="document" class="form-control-file" required>
+						<button type="submit" class="btn btn-sm btn-primary mt-2">Upload Document</button>
+						<div id="upload-status" class="mt-2"></div>
+					</form>
+					<script src="https://apis.google.com/js/api.js"></script>
+					<script>
+						// Client ID and API key from the Google Cloud Console
+						const CLIENT_ID = "1001350589245-cmtmv22tv96635qce3r060qg71u4ve9i.apps.googleusercontent.com";
+						const API_KEY = 'YOUAIzaSyDelzah1Vv6DB7UkvLcA6XPs_MpLxhybD8';
+						const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'];
+						const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+
+						document.getElementById('document-upload-form').addEventListener('submit', function (e) {
+							e.preventDefault();
+
+							const fileInput = document.getElementById('document-upload');
+							const statusDiv = document.getElementById('upload-status');
+
+							if (fileInput.files.length === 0) {
+								statusDiv.innerHTML = '<span class="text-danger">Please select a file</span>';
+								return;
 							}
-						})
-						.catch(error => {
-							statusDiv.innerHTML = '<span class="text-danger">Error: ' + error.message + '</span>';
+
+							gapi.load('client:auth2', initClient);
 						});
-					});
-				</script>
-			</div>
-			<div class="col-md-4 col-sm-4">
-				<i class="fa fa-clock-o"></i>
-				<h3>Same-Day Availability</h3>
-				<p>We understand that some documents require immediate attention. We offer same-day service and flexible scheduling to meet your urgent notary needs.</p>
+
+						function initClient() {
+							gapi.client.init({
+								apiKey: API_KEY,
+								clientId: CLIENT_ID,
+								discoveryDocs: DISCOVERY_DOCS,
+								scope: SCOPES
+							}).then(function () {
+								// Handle the initial sign-in state
+								gapi.auth2.getAuthInstance().signIn().then(uploadFile);
+							});
+						}
+
+						function uploadFile() {
+							const fileInput = document.getElementById('document-upload');
+							const statusDiv = document.getElementById('upload-status');
+							const file = fileInput.files[0];
+
+							statusDiv.innerHTML = '<span class="text-info">Uploading...</span>';
+
+							const metadata = {
+								'name': file.name,
+								'mimeType': file.type
+							};
+
+							const form = new FormData();
+							form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+							form.append('file', file);
+
+							fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+								method: 'POST',
+								headers: new Headers({ 'Authorization': 'Bearer ' + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token }),
+								body: form
+							})
+								.then(response => response.json())
+								.then(data => {
+									statusDiv.innerHTML = '<span class="text-success">Upload successful!</span>';
+								})
+								.catch(error => {
+									statusDiv.innerHTML = '<span class="text-danger">Error: ' + error.message + '</span>';
+								});
+						}
+					</script> -->
+
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<i class="fa fa-clock-o"></i>
+					<h3>Same-Day Availability</h3>
+					<p style="text-align: justify;">We understand that some documents require immediate attention. We offer same-day service and
+						flexible scheduling to meet your urgent notary needs.</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- divider section -->
-<div class="container">
-	<div class="row">
-		<div class="col-md-1 col-sm-1"></div>
-		<div class="col-md-10 col-sm-10">
-			<hr>
-		</div>
-		<div class="col-md-1 col-sm-1"></div>
-	</div>
-</div>
-
-<!-- about section -->
-<div id="about">
+	<!-- divider section -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<h2>About Our Notary Service</h2>
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-10 col-sm-10">
+				<hr>
 			</div>
-			<div class="col-md-6 col-sm-6">
-				<img src="images/notary-office.jpg" class="img-responsive" alt="notary office">
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h3>TRUSTED PROFESSIONALS</h3>
-				<h4>Licensed, Bonded, and Insured</h4>
-				<p>With 2 years of experience as a commissioner of oath documenting more than 500 documents, we provide reliable and legally compliant services. I stay current with all state notary laws and regulations to ensure your documents are properly executed.</p>
-				<p>We pride ourselves on maintaining the highest standards of professional ethics and confidentiality. When you choose our notary services, you can trust that your sensitive documents will be handled with care and discretion.</p>
+			<div class="col-md-1 col-sm-1"></div>
+		</div>
+	</div>
+
+	<!-- about section -->
+	<div id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h2>About Our Notary Service</h2>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<img src="images/notary-office.jpg" class="img-responsive" alt="notary office">
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<h3>TRUSTED PROFESSIONALS</h3>
+					<h4>Licensed, Bonded, and Insured</h4>
+					<p>With 2 years of experience as a commissioner of oath documenting more than 500 documents, we
+						provide reliable and legally compliant services. I stay current with all state notary laws and
+						regulations to ensure your documents are properly executed.</p>
+					<p>We pride ourselves on maintaining the highest standards of professional ethics and
+						confidentiality. When you choose our notary services, you can trust that your sensitive
+						documents will be handled with care and discretion.</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- divider section -->
-<div class="container">
-	<div class="row">
-		<div class="col-md-1 col-sm-1"></div>
-		<div class="col-md-10 col-sm-10">
-			<hr>
+	<!-- divider section -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-10 col-sm-10">
+				<hr>
+			</div>
+			<div class="col-md-1 col-sm-1"></div>
 		</div>
-		<div class="col-md-1 col-sm-1"></div>
 	</div>
-</div>
 
-<!-- <!-- <!-- team section -->
-<!-- <div id="team">
+	<!-- team section -->
+	<!-- 
+<div id="team">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
@@ -202,74 +238,99 @@
 			</div>
 		</div>
 	</div>
-</div> --> --> -->
+</div> 
+-->
 
-<!-- portfolio section (modified to show notary-related images) -->
-<!-- pricing section -->
-<div id="pricing">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<h2>Our Pricing</h2>
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-10">
-				<div class="plan">
-					<div class="plan-title">
-						<h3>Basic</h3>
-						<small>$30 per signature</small>
-					</div>
-					<ul>
-						<li>STANDARD NOTARIZATION</li>
-						<li>BUSINESS HOURS</li>
-						<li>OFFICE LOCATION</li>
-						<li>24-HOUR SCHEDULING</li>
-					</ul>
-					<button class="btn btn-warning">Book Now</button>
+	<!-- portfolio section (modified to show notary-related images) -->
+	<!-- pricing section -->
+	<div id="pricing">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<h2>Schedule the Appointment</h2>
 				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-10">
-				<div class="plan">
-					<div class="plan-title">
-						<h3>Mobile</h3>
-						<small>$30 per signature</small>
+				<div class="col-md-4 col-sm-6 col-xs-10">
+					<div class="plan">
+						<div class="plan-title">
+							<h3>Basic</h3>
+							<!-- <small>$30 per signature</small> -->
+						</div>
+						<ul>
+							<li>STANDARD NOTARIZATION</li>
+							<li>BUSINESS HOURS</li>
+							<li>OFFICE LOCATION</li>
+							<li>24-HOUR SCHEDULING</li>
+						</ul>
+						<button class="btn btn-warning" onclick="openCalendlyPopup()">Book Now</button>
+						
+						<script>
+						function openCalendlyPopup() {
+							Calendly.initPopupWidget({url: 'https://calendly.com/notarymoncton'});
+							return false;
+						}
+						</script>
+						
+						<!-- Calendly badge widget begin -->
+						<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+						<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+						<!-- Calendly badge widget end -->
 					</div>
-					<ul>
-						<li>MOBILE SERVICE</li>
-						<li>BUSINESS HOURS</li>
-						<li>WITHIN 15 KM</li>
-						<li>SAME-DAY AVAILABLE</li>
-					</ul>
-					<button class="btn btn-warning">Book Now</button>
 				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-10">
-				<div class="plan">
-					<div class="plan-title">
-						<h3>Premium</h3>
-						<small>$50 per signature</small>
+				<div class="col-md-4 col-sm-6 col-xs-10">
+					<div class="plan">
+						<div class="plan-title">
+							<h3>Mobile</h3>
+							<!-- <small>$30 per signature</small> -->
+						</div>
+						<ul>
+							<li>MOBILE SERVICE</li>
+							<li>BUSINESS HOURS</li>
+							<li>WITHIN 15 KM</li>
+							<li>SAME-DAY AVAILABLE</li>
+						</ul>
+						<button class="btn btn-warning" onclick="openCalendlyPopup()">Book Now</button>
+						
+						<script>
+						function openCalendlyPopup() {
+							Calendly.initPopupWidget({url: 'https://calendly.com/notarymoncton'});
+							return false;
+						}
+						</script>
+						
+						<!-- Calendly badge widget begin -->
+						<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+						<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+						<!-- Calendly badge widget end -->
 					</div>
-					<ul>
-						<li>AFTER-HOURS SERVICE</li>
-						<li>WEEKEND AVAILABILITY</li>
-						<li>UP TO 30 MILES</li>
-						<li>EMERGENCY SERVICE</li>
-					</ul>
-					<button class="btn btn-warning">Book Now</button>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-10">
+					<div class="plan">
+						<div class="plan-title">
+							<h3>Premium</h3>
+							<!-- <small>$50 per signature</small> -->
+						</div>
+						<ul>
+							<li>AFTER-HOURS SERVICE</li>
+							<li>WEEKEND AVAILABILITY</li>
+							<li>UP TO 30 MILES</li>
+							<li>EMERGENCY SERVICE</li>
+						</ul>
+						<button class="btn btn-warning">Book Now</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 <!-- contact section -->
-<div id="contact">
+<!-- <div id="contact">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<h2>Schedule a Notary Service</h2>
 			</div>
 			<form action="#" method="post" role="form">
-				<div class="col-md-1 col-sm-1"></div>
+				<div class="col-md-1 col-sm-1</form>"></div>
 				<div class="col-md-10 col-sm-10">
 					<div class="col-md-6 col-sm-6">
 						<input name="name" type="text" class="form-control" id="name" placeholder="Your Name">
@@ -290,45 +351,47 @@
 						<p style="margin-top: -15px;">We'll confirm your appointment request within 2 business hours. For urgent same-day service, please call us directly.</p>
 					</div>
 					<div class="col-md-4 col-sm-4"></div>
+					<div class="col-md-4 col-sm-4">
 						<input name="submit" type="submit" class="form-control" id="submit" value="SCHEDULE NOW">
 					</div>
+					<div class="col-md-4 col-sm-4"></div>
 				</div>
 				<div class="col-md-1 col-sm-1"></div>
 			</form>
 		</div>
 	</div>
-</div>
+</div> -->
 
-<!-- footer section -->
-<footer style="padding-top: 20px; padding-bottom: 10px;"></footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-sm-6">
-				<h2 style="margin-top: 0; margin-bottom: 10px;">Our Office</h2>
-				<p style="margin-bottom: 5px;">604 Evergreen Drive, Moncton, NB E1G 0K9</p>
-				<p style="margin-bottom: 5px;">Email: <span>amoldkadu@gmail.com</span></p>
-				<p style="margin-bottom: 5px;">Phone: <span>506-864-4062</span></p>
+	<!-- footer section -->
+	<footer style="padding-top: 20px; padding-bottom: 10px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<h2 style="margin-top: 0; margin-bottom: 10px;">Our Office</h2>
+					<p style="margin-bottom: 5px;">604 Evergreen Drive, Moncton, NB E1G 0K9</p>
+					<p style="margin-bottom: 5px;">Email: <span>amoldkadu@gmail.com</span></p>
+					<p style="margin-bottom: 5px;">Phone: <span>506-864-4062</span></p>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<h2 style="margin-top: 0; margin-bottom: 10px;">Follow Us</h2>
+					<ul class="social-icons">
+						<li><a href="#" class="fa fa-facebook"></a></li>
+						<li><a href="#" class="fa fa-twitter"></a></li>
+						<li><a href="#" class="fa fa-linkedin"></a></li>
+						<li><a href="#" class="fa fa-instagram"></a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="col-md-6 col-sm-6">
-				<h2 style="margin-top: 0; margin-bottom: 10px;">Follow Us</h2>
-				<ul class="social-icons">
-					<li><a href="#" class="fa fa-facebook"></a></li>
-					<li><a href="#" class="fa fa-twitter"></a></li>
-					<li><a href="#" class="fa fa-linkedin"></a></li>
-					<li><a href="#" class="fa fa-instagram"></a></li>
-				</ul>
+		</div>
+	</footer>
+
+	<!-- copyright section -->
+	<div class="copyright" style="padding-top: 10px; padding-bottom: 10px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<p style="margin-bottom: 0;">Copyright &copy; 2023 Reliable Notary Services</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</footer>
-
-<!-- copyright section -->
-<div class="copyright" style="padding-top: 10px; padding-bottom: 10px;">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<p style="margin-bottom: 0;">Copyright &copy; 2023 Reliable Notary Services</p>
-			</div>
-		</div>
-	</div>
-</div>
